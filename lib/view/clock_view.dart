@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'theme_data.dart';
+import '../constants/theme_data.dart';
 
 class ClockView extends StatefulWidget {
   const ClockView({
