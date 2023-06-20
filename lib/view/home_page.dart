@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clock_app/data.dart';
-import 'package:flutter_clock_app/enums.dart';
-import 'package:flutter_clock_app/model/menu_info.dart';
-import 'package:flutter_clock_app/view/clock_page.dart';
 import 'package:provider/provider.dart';
 
+import '../data.dart';
+import '../model/menu_info.dart';
 import '../constants/theme_data.dart';
+
+import 'clock_page.dart';
 import 'alarm_page.dart';
 
 class HomePage extends StatefulWidget {

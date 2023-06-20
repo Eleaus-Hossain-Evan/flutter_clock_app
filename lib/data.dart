@@ -1,6 +1,5 @@
 import 'package:flutter_clock_app/model/menu_info.dart';
 
-import 'constants/theme_data.dart';
 import 'enums.dart';
 import 'model/alarm_info.dart';
 
@@ -17,13 +16,15 @@ List<MenuInfo> menuItems = [
 
 List<AlarmInfo> alarms = [
   AlarmInfo(
-    DateTime.now().add(const Duration(hours: 1)),
-    description: 'Office',
-    gradientColors: GradientColors.sky,
+    id: 1,
+    alarmDateTime: DateTime.now().add(const Duration(hours: 1)),
+    title: 'Office',
+    gradientColorIndex: 0,
   ),
   AlarmInfo(
-    DateTime.now().add(const Duration(hours: 2)),
-    description: 'Sport',
-    gradientColors: GradientColors.sunset,
+    id: 2,
+    alarmDateTime: DateTime.now().add(const Duration(hours: 2)),
+    title: 'Sport',
+    gradientColorIndex: 1,
   ),
 ];
