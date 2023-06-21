@@ -57,16 +57,16 @@ class AlarmHelper {
   }
 
   Future<List<AlarmInfo>> getAlarms() async {
-    List<AlarmInfo> _alarms = [];
+    List<AlarmInfo> alarms = [];
 
     var db = await database;
     var result = await db.query(tableAlarm);
-    result.forEach((element) {
+    for (var element in result) {
       var alarmInfo = AlarmInfo.fromMap(element);
-      _alarms.add(alarmInfo);
-    });
+      alarms.add(alarmInfo);
+    }
 
-    return _alarms;
+    return alarms;
   }
 
   Future<int> delete(int id) async {

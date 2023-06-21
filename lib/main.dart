@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easylogger/flutter_logger.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 
 import 'enums.dart';
-import 'model/menu_info.dart';
+import 'providers/local_database_provider.dart';
+import 'providers/menu_info.dart';
 import 'view/home_page.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -33,6 +35,13 @@ void main() async {
       onDidReceiveNotificationResponse: (detail) {
     debugPrint('notification: $detail');
   });
+
+  Logger.init(
+    true,
+    isShowNavigation: true,
+    isShowTime: false,
+    isShowFile: false,
+  );
   runApp(MyApp());
 }
 
@@ -40,19 +49,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: ChangeNotifierProvider<MenuInfo>(
-        create: (context) => MenuInfo(
-          MenuType.clock,
-          title: "Clock",
-          imageSource: "assets/clock_icon.png",
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<MenuInfo>(
+          create: (context) => MenuInfo(
+            MenuType.clock,
+            title: "Clock",
+            imageSource: "assets/clock_icon.png",
+          ),
         ),
-        child: const HomePage(),
+        ChangeNotifierProvider<LocalDatabaseProvider>(
+          create: (context) => LocalDatabaseProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const HomePage(),
       ),
     );
   }

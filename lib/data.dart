@@ -1,4 +1,4 @@
-import 'package:flutter_clock_app/model/menu_info.dart';
+import 'package:flutter_clock_app/providers/menu_info.dart';
 
 import 'enums.dart';
 import 'model/alarm_info.dart';

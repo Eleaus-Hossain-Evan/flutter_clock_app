@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data.dart';
-import '../model/menu_info.dart';
+import '../providers/menu_info.dart';
 import '../constants/theme_data.dart';
 
 import 'clock_page.dart';
-import 'alarm_page.dart';
+import 'alarm/alarm_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
